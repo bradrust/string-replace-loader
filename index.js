@@ -13,7 +13,7 @@ function processQuery(source, query) {
   return source;
 }
 
-module.exports = function (source) {
+module.exports = function (source, map) {
   this.cacheable();
   var callback = this.async();
 
