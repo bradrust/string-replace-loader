@@ -15,6 +15,7 @@ function processQuery(source, query) {
 
 module.exports = function (source) {
   this.cacheable();
+  var callback = this.async();
 
   var query = utils.parseQuery(this.query);
 
@@ -26,5 +27,9 @@ module.exports = function (source) {
     source = processQuery(source, query);
   }
 
-  return source;
+  if (!callback) return source;
+
+  callback(null, source, map);
+
 };
+
